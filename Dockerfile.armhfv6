@@ -67,6 +67,7 @@ RUN	curl -sSL https://golang.org/dl/go1.3.3.src.tar.gz | tar -v -C /usr/local -x
 ENV	PATH	/usr/local/go/bin:$PATH
 ENV	GOPATH	/go:/go/src/github.com/docker/docker/vendor
 ENV PATH /go/bin:$PATH
+ENV GOARM 6
 RUN	cd /usr/local/go/src && ./make.bash -j $(nproc) --no-clean 2>&1
 
 CMD cd /docker && AUTO_GOPATH=1 ./hack/make.sh binary

@@ -9,10 +9,10 @@ import (
 	"github.com/docker/docker/pkg/archive"
 )
 
-type FsMagic uint64
+type FsMagic int32
 
 const (
-	FsMagicBtrfs = FsMagic(0x9123683E)
+	FsMagicBtrfs = FsMagic(-1859950530)
 	FsMagicAufs  = FsMagic(0x61756673)
 )
 

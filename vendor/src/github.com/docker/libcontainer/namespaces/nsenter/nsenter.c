@@ -89,10 +89,12 @@ void nsenter()
 		return;
 	}
 
+	#ifdef PR_SET_CHILD_SUBREAPER
 	if (prctl(PR_SET_CHILD_SUBREAPER, 1, 0, 0, 0) == -1) {
                 fprintf(stderr, "nsenter: failed to set child subreaper: %s", strerror(errno));
                 exit(1);
         }
+	#endif
 
 	static const struct option longopts[] = {
 		{"nspid", required_argument, NULL, 'n'},

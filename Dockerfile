@@ -68,12 +68,12 @@ RUN	cd /usr/local/go/src && ./make.bash --no-clean 2>&1
 ENV	DOCKER_CROSSPLATFORMS	\
 	linux/386 linux/arm \
 	darwin/amd64 darwin/386 \
-	freebsd/amd64 freebsd/386 freebsd/arm 
+	freebsd/amd64 freebsd/386 freebsd/arm
 #	windows is experimental for now
 #	windows/amd64 windows/386
 
-# (set an explicit GOARM of 5 for maximum compatibility)
-ENV	GOARM	5
+# (set an explicit GOARM of 7 for maximum performances)
+ENV	GOARM	7
 RUN	cd /usr/local/go/src && bash -xc 'for platform in $DOCKER_CROSSPLATFORMS; do GOOS=${platform%/*} GOARCH=${platform##*/} ./make.bash --no-clean 2>&1; done'
 
 # Grab Go's cover tool for dead-simple code coverage testing
